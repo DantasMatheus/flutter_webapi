@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.alura.flutter_webapi_first_course">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
    <application
         android:label="flutter_webapi_first_course"
         android:name="${applicationName}"

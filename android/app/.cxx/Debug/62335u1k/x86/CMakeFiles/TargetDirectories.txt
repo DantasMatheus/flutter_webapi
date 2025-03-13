@@ -1,0 +1,2 @@
+C:/Users/Maths/Documents/ProjetosGit/flutter_webapi/android/app/.cxx/Debug/62335u1k/x86/CMakeFiles/edit_cache.dir
+C:/Users/Maths/Documents/ProjetosGit/flutter_webapi/android/app/.cxx/Debug/62335u1k/x86/CMakeFiles/rebuild_cache.dir

@@ -1,13 +1,15 @@
-import 'dart:math';
-
 import 'package:http_interceptor/http_interceptor.dart';
+import 'dart:developer';
 
 class LoggerInterceptor extends InterceptorContract {
   @override
   Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
-    print('----- Request -----');
-    print(request.toString());
-    print(request.headers.toString());
+    log('----- Request -----');
+    log('URL: ${request.url}');
+    log('Headers: ${request.headers}');
+    if (request is Request) {
+      log('Body: ${request.body}');
+    }
     return request;
   }
 
@@ -15,10 +17,10 @@ class LoggerInterceptor extends InterceptorContract {
   Future<BaseResponse> interceptResponse({
     required BaseResponse response,
   }) async {
-    log('----- Response -----' as num);
-    log('Code: ${response.statusCode}' as num);
+    log('----- Response -----');
+    log('Status Code: ${response.statusCode}');
     if (response is Response) {
-      log((response).body as num);
+      log('Body: ${response.body}');
     }
     return response;
   }

@@ -6,7 +6,13 @@ import 'package:uuid/uuid.dart';
 class JournalCard extends StatelessWidget {
   final Journal? journal;
   final DateTime showedDate;
-  const JournalCard({super.key, this.journal, required this.showedDate});
+  final Function refreshFunction;
+  const JournalCard({
+    super.key,
+    this.journal,
+    required this.showedDate,
+    required this.refreshFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -102,10 +108,15 @@ class JournalCard extends StatelessWidget {
         updatedAt: showedDate,
       ),
     ).then((value) {
-      if (value != null && value == true && context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Registro feito com sucesso!")),
-        );
+      refreshFunction();
+      if (context.mounted) {
+        final message =
+            (value == true)
+                ? "Registro feito com sucesso!"
+                : "Houve uma falha ao registrar";
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(message)));
       }
     });
   }

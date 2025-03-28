@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-showConfirmationDialog(
+Future<dynamic> showConfirmationDialog(
   BuildContext context, {
   String title = "Atenção!",
   String content = "Você realmente deseja executar essa operação?",
@@ -14,11 +14,15 @@ showConfirmationDialog(
         content: Text(content),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context, false);
+            },
             child: Text("Cancelar", style: TextStyle(color: Colors.black54)),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context, true);
+            },
             child: Text(
               confirmOption.toUpperCase(),
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),

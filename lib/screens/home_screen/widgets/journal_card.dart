@@ -143,13 +143,23 @@ class JournalCard extends StatelessWidget {
     JournalService service = JournalService();
 
     if (journal != null) {
-      // showConfirmationDialog(context);
-      service.delete(journal!.id).then((value) {
-        if (value && context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Removido com sucesso!")),
-          );
-          refreshFunction();
+      showConfirmationDialog(
+        context,
+        content:
+            "Deseja realmente remover o diário do dia ${WeekDay(journal!.createdAt)}?",
+        confirmOption: "Remover",
+      ).then((value) {
+        if (value != null) {
+          if (value) {
+            service.delete(journal!.id).then((value) {
+              if (value && context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Removido com sucesso!")),
+                );
+                refreshFunction();
+              }
+            });
+          } else {}
         }
       });
     }

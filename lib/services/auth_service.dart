@@ -1,8 +1,8 @@
-import 'dart:io';
-
+import 'dart:convert';
+import 'dart:io' show HttpException;
 import 'package:http/http.dart' as http;
-import 'package:http_interceptor/http/intercepted_client.dart';
 import 'http_interceptors.dart';
+import 'package:http_interceptor/http_interceptor.dart';
 
 class AuthService {
   //TODO: Modularizar o endpoint
@@ -12,16 +12,25 @@ class AuthService {
     interceptors: [LoggerInterceptor()],
   );
 
-  login({required String email, required String password}) async {
+  Future<bool> login({required String email, required String password}) async {
     http.Response response = await client.post(
       Uri.parse('${url}login'),
       body: {'email': email, 'password': password},
     );
 
     if (response.statusCode != 200) {
+      String content = json.decode(response.body);
+      switch (content) {
+        case "Cannot find user":
+          throw UserNotFoundException();
+      }
       throw HttpException(response.body);
     }
+
+    return true;
   }
 
   register() {}
 }
+
+class UserNotFoundException implements Exception {}

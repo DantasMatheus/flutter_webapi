@@ -30,7 +30,12 @@ class AuthService {
     return true;
   }
 
-  register() {}
+  register({required String email, required String password}) async {
+    http.Response response = await client.post(
+      Uri.parse('${url}register'),
+      body: {'email': email, 'password': password},
+    );
+  }
 }
 
 class UserNotFoundException implements Exception {}

@@ -4,6 +4,11 @@
       "email": "ma_dv@gmail.com",
       "password": "$2a$10$isqYJON7BOgYWaIrspu22.cgY7kv1L696AZX8XREogCbeH5CZPVNy",
       "id": 1
+    },
+    {
+      "email": "ma_vi@gmail.com",
+      "password": "$2a$10$RxEsyv6JkXZoMgRCYw2MveSxyASFTQcQCIT8y3vrC6tEkxzYvU/7e",
+      "id": 2
     }
   ],
   "learnhttp": {

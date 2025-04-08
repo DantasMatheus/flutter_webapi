@@ -81,7 +81,11 @@ class LoginScreen extends StatelessWidget {
           content:
               "Deseja criar um novo usuário usando o e-mail $email e a senha inserida?",
           confirmOption: "CRIAR",
-        );
+        ).then((value) {
+          if (value != null && value) {
+            service.register(email: email, password: password);
+          }
+        });
       }
     }
   }

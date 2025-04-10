@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "E:\\Desenvolvimento-Mobile\\flutter_windows_3.0.1-stable\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "E:\\AndroidAPP\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "E:\\Projetos\\flutter_webapi\\android\\app\\.cxx\\Debug\\4n6i23l3\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "E:\\AndroidAPP\\android-sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "E:\\Projetos\\flutter_webapi\\android\\app\\.cxx\\Debug\\4n6i23l3\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {},
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "E:\\AndroidAPP\\android-sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "E:\\AndroidAPP\\android-sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

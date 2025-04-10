@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController _passController = TextEditingController();
 
-  AuthService service = AuthService();
+  final AuthService service = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,14 @@ class LoginScreen extends StatelessWidget {
     String password = _passController.text;
 
     try {
-      bool result = await service.login(email: email, password: password);
+      bool result = await service.login(email: email, password: password).then((
+        resultLogin,
+      ) {
+        if (resultLogin) {
+          Navigator.pushReplacementNamed(context, "home");
+        }
+        return resultLogin;
+      });
     } on UserNotFoundException {
       if (context.mounted) {
         showConfirmationDialog(
@@ -83,7 +90,13 @@ class LoginScreen extends StatelessWidget {
           confirmOption: "CRIAR",
         ).then((value) {
           if (value != null && value) {
-            service.register(email: email, password: password);
+            service.register(email: email, password: password).then((
+              resultRegister,
+            ) {
+              if (resultRegister) {
+                Navigator.pushReplacementNamed(context, "home");
+              }
+            });
           }
         });
       }

@@ -77,7 +77,9 @@ class LoginScreen extends StatelessWidget {
         resultLogin,
       ) {
         if (resultLogin) {
-          Navigator.pushReplacementNamed(context, "home");
+          if (context.mounted) {
+            Navigator.pushReplacementNamed(context, "home");
+          }
         }
         return resultLogin;
       });
@@ -94,7 +96,9 @@ class LoginScreen extends StatelessWidget {
               resultRegister,
             ) {
               if (resultRegister) {
-                Navigator.pushReplacementNamed(context, "home");
+                if (context.mounted) {
+                  Navigator.pushReplacementNamed(context, "home");
+                }
               }
             });
           }

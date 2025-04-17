@@ -52,6 +52,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text("Sair"),
+              leading: Icon(Icons.logout),
+              onTap: () {
+                logout();
+              },
+            ),
+          ],
+        ),
+      ),
       body:
           (userId != null && userToken != null)
               ? ListView(
@@ -89,6 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         });
       } else if (mounted) {
+        Navigator.pushReplacementNamed(context, "login");
+      }
+    });
+  }
+
+  logout() {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.clear();
+      if (mounted) {
         Navigator.pushReplacementNamed(context, "login");
       }
     });

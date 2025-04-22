@@ -14,6 +14,11 @@
       "email": "ma_dv21@gmail.com",
       "password": "$2a$10$IGO1cPR/8sG7950pdU12q.tQGNqSvzKY4La5XYi5Qro0vVgjkPzg.",
       "id": 3
+    },
+    {
+      "email": "gui@gmail.com",
+      "password": "$2a$10$XUYCdeVqTG3icTySeAfwtOUAbPPpnHyqVd6EVmsnZl0ivRKW9IUPi",
+      "id": 4
     }
   ],
   "learnhttp": {
@@ -40,6 +45,20 @@
       "created_at": "2025-04-14 15:00:08.879389",
       "updated_at": "2025-04-14 15:00:08.879389",
       "userId": 3
+    },
+    {
+      "id": "810f9eb0-1f73-11f0-80bc-b70dd4dd3be6",
+      "content": "Ganhei 4 pontos na carteira!!!",
+      "created_at": "2025-04-15 12:15:37.379939",
+      "updated_at": "2025-04-22 12:17:43.145345",
+      "userId": 1
+    },
+    {
+      "id": "46fb5830-1f74-11f0-80bc-b70dd4dd3be6",
+      "content": "Comi pao com manteiga!",
+      "created_at": "2025-04-16 12:21:09.573707",
+      "updated_at": "2025-04-16 12:21:09.573707",
+      "userId": 4
     }
   ]
 }

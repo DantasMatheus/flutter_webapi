@@ -55,8 +55,6 @@ class AuthService {
     prefs.setString("accessToken", token);
     prefs.setString("email", email);
     prefs.setInt("id", id);
-
-    prefs.getString("accessToken");
   }
 }
 

@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_webapi_first_course/helpers/logout.dart';
 import 'package:flutter_webapi_first_course/helpers/weekday.dart';
 import 'package:flutter_webapi_first_course/models/journal.dart';
+import 'package:flutter_webapi_first_course/screens/common/exception_dialog.dart';
 import 'package:flutter_webapi_first_course/services/journal_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,17 +52,43 @@ class AddJournalScreen extends StatelessWidget {
         journal.content = content;
         JournalService service = JournalService();
         if (isEditing) {
-          service.register(journal, token).then((value) {
-            if (context.mounted) {
-              Navigator.pop(context, value);
-            }
-          });
+          service
+              .register(journal, token)
+              .then((value) {
+                if (context.mounted) {
+                  Navigator.pop(context, value);
+                }
+              })
+              .catchError((error) {
+                if (context.mounted) {
+                  logout(context);
+                }
+              }, test: (error) => error is TokenNotValidException)
+              .catchError((error) {
+                var innerError = error as HttpException;
+                if (context.mounted) {
+                  showExceptionDialog(context, content: innerError.message);
+                }
+              }, test: (error) => error is HttpException);
         } else {
-          service.edit(journal.id, journal, token).then((value) {
-            if (context.mounted) {
-              Navigator.pop(context, value);
-            }
-          });
+          service
+              .edit(journal.id, journal, token)
+              .then((value) {
+                if (context.mounted) {
+                  Navigator.pop(context, value);
+                }
+              })
+              .catchError((error) {
+                if (context.mounted) {
+                  logout(context);
+                }
+              }, test: (error) => error is TokenNotValidException)
+              .catchError((error) {
+                var innerError = error as HttpException;
+                if (context.mounted) {
+                  showExceptionDialog(context, content: innerError.message);
+                }
+              }, test: (error) => error is HttpException);
         }
       }
     });
